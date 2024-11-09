@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+    
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 20px;
+            }
+    
+            #input-container {
+                
+                justify-content: center;
+            }
+    
+            #result-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+    
+            #text-input, #number-input {
+                width: 150px;
+                margin: 5px;
+            }
+    
+            #generate-button, #clear-button {
+                padding: 10px 20px;
+                margin: 10px;
+                background-color: #0074d9;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+    
+            #generate-button:hover, #clear-button:hover {
+                background-color: #0056b3;
+            }
+    
+            #output {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="input-container">
+                <div>
+                    <input type="text" id="text-input" placeholder="Enter text"><br>
+                </div>
+                <div>
+                    <input type="number" id="number-input" placeholder="Enter number">
+                </div>
+            </div>
+            <button id="generate-button">Generate</button>
+            <button id="clear-button">Clear</button>
+        </div>
+        <div class="container">
+            <div id="result-container">
+                <div id="output"></div>
+            </div>
+        </div>
+    
+        <script>
+            const generateButton = document.getElementById('generate-button');
+            const clearButton = document.getElementById('clear-button');
+            const textInput = document.getElementById('text-input');
+            const numberInput = document.getElementById('number-input');
+            const output = document.getElementById('output');
+    
+            generateButton.addEventListener('click', function () {
+                const text = textInput.value;
+                const count = parseInt(numberInput.value);
+    
+                if (text && count > 0) {
+                    let result = '';
+                    for (let i = 0; i < count; i++) {
+                        result += text + ' ';
+                    }
+                    output.textContent = result;
+                } else {
+                    output.textContent = 'Please enter valid input';
+                }
+            });
+    
+            clearButton.addEventListener('click', function () {
+                textInput.value = '';
+                numberInput.value = '';
+                output.textContent = '';
+            });
+        </script>
+    </body>
+    </html>
